@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="WiFi Security Lab — a safe, bilingual Wi-Fi security learning simulator.">
+  <title>WiFi Security Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="WiFi Security Lab home">
+        <span class="brand-mark">⌁</span><span><strong>WiFi</strong><small>SECURITY LAB</small></span>
+      </a>
+      <div class="lab-badge"><span class="pulse"></span><span data-i18n="safeMode">SAFE SIMULATION MODE</span></div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><span>◫</span><span data-i18n="dashboard">Dashboard</span></button>
+        <button class="nav-item" data-view="networks"><span>⌁</span><span data-i18n="networks">Network simulator</span></button>
+        <button class="nav-item" data-view="passwords"><span>▦</span><span data-i18n="passwords">Password lab</span></button>
+        <button class="nav-item" data-view="audit"><span>◉</span><span data-i18n="audit">Router security check</span></button>
+        <button class="nav-item" data-view="reports"><span>▤</span><span data-i18n="reports">Reports</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="shield">⬡</span><p data-i18n="sidebarNote">Practice safely. No real networks are scanned and no passwords are sent anywhere.</p></div>
+      <div class="sidebar-footer">WI-FI SECURITY LAB <span>v1.0 · DEMO</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+        <div><div class="eyebrow" data-i18n="workspace">LEARNING WORKSPACE</div><h1 id="pageTitle">Security dashboard</h1></div>
+        <div class="top-actions">
+          <span class="status-chip"><span class="status-dot"></span><span data-i18n="simActive">Simulator active</span></span>
+          <button class="lang-toggle" id="langToggle" aria-label="Switch language">العربية</button>
+        </div>
+      </header>
+      <div class="notice"><span class="notice-icon">ⓘ</span><div><strong data-i18n="noticeTitle">Training environment only</strong><p data-i18n="noticeText">All networks, scans, and test results on this page are generated locally as examples. This app does not access your Wi-Fi adapter or test a real router.</p></div></div>
+
+      <section class="view active" id="view-dashboard">
+        <div class="welcome"><div><p class="eyebrow" data-i18n="overview">OVERVIEW</p><h2 data-i18n="welcomeTitle">Build stronger Wi-Fi defenses.</h2><p data-i18n="welcomeText">Explore wireless security concepts in a controlled, hands-on simulator.</p></div><div class="hero-icon">⌁</div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-label" data-i18n="simNetworks">Demo networks</div><div class="stat-value" id="networkCount">6</div><div class="stat-foot"><span class="mini-dot green"></span><span data-i18n="localData">Local sample data</span></div></article>
+          <article class="stat-card"><div class="stat-label" data-i18n="securityScore">Security score</div><div class="stat-value"><span id="scoreValue">78</span><small>/100</small></div><div class="progress"><span id="scoreBar" style="width:78%"></span></div></article>
+          <article class="stat-card"><div class="stat-label" data-i18n="checksDone">Checks completed</div><div class="stat-value" id="checksValue">0</div><div class="stat-foot" data-i18n="thisSession">This session</div></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow" data-i18n="quickStart">QUICK START</p><h2 data-i18n="chooseModule">Choose a lab module</h2></div></div>
+        <div class="module-grid">
+          <button class="module-card" data-open="networks"><span class="module-icon cyan">⌁</span><strong data-i18n="networkModule">Network simulator</strong><span data-i18n="networkModuleText">Explore fictional access points and compare encryption standards.</span><span class="module-link" data-i18n="openLab">Open lab ↗</span></button>
+          <button class="module-card" data-open="passwords"><span class="module-icon purple">▦</span><strong data-i18n="passwordModule">Password lab</strong><span data-i18n="passwordModuleText">Generate a strong sample passphrase and estimate its strength.</span><span class="module-link" data-i18n="openLab">Open lab ↗</span></button>
+          <button class="module-card" data-open="audit"><span class="module-icon green">◉</span><strong data-i18n="auditModule">Router security check</strong><span data-i18n="auditModuleText">Complete a checklist for a router you own or administer.</span><span class="module-link" data-i18n="openLab">Open lab ↗</span></button>
+        </div>
+        <div class="bottom-grid">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow" data-i18n="standards">STANDARDS</p><h3 data-i18n="compareTitle">Encryption at a glance</h3></div><span class="panel-symbol">⌘</span></div><div class="standard-list"><div><span class="standard-pill weak">WEP</span><span data-i18n="wepText">Obsolete — avoid</span><span class="risk high" data-i18n="highRisk">High risk</span></div><div><span class="standard-pill medium">WPA2</span><span data-i18n="wpa2Text">Good with AES and a strong password</span><span class="risk medium-risk" data-i18n="mediumRisk">Depends</span></div><div><span class="standard-pill strong">WPA3</span><span data-i18n="wpa3Text">Preferred when all devices support it</span><span class="risk low" data-i18n="recommended">Recommended</span></div></div></article>
+          <article class="panel tip-panel"><div class="tip-icon">✦</div><p class="eyebrow" data-i18n="labTip">LAB TIP</p><h3 data-i18n="tipTitle">A few small changes go a long way.</h3><p data-i18n="tipText">Use WPA3 or WPA2-AES, set a unique long passphrase, update router firmware, and turn off WPS if you do not need it.</p><button class="text-button" data-open="audit"><span data-i18n="runChecklist">Run security checklist</span> ↗</button></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-networks">
+        <div class="page-intro"><p class="eyebrow" data-i18n="SIMULATION">SIMULATION</p><h2 data-i18n="networkTitle">Wireless network explorer</h2><p data-i18n="networkIntro">Refresh a fictional list of access points and learn what their security labels mean.</p></div>
+        <div class="toolbar"><div class="search-box"><span>⌕</span><input id="networkSearch" type="search" placeholder="Search sample networks…" data-i18n-placeholder="searchNetworks"></div><select id="securityFilter" aria-label="Filter by security"><option value="all" data-i18n="allStandards">All standards</option><option>WPA3</option><option>WPA2</option><option>WPA</option><option>Open</option></select><button class="primary-btn" id="refreshNetworks"><span>↻</span><span data-i18n="refreshDemo">Refresh demo list</span></button></div>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th data-i18n="ssid">Network name (SSID)</th><th data-i18n="security">Security</th><th data-i18n="signal">Signal</th><th data-i18n="channel">Channel</th><th data-i18n="assessment">Assessment</th></tr></thead><tbody id="networkRows"></tbody></table></div><div class="table-foot" data-i18n="fictionalFoot">Sample data only · No live scanning is performed.</div></div>
+      </section>
+
+      <section class="view" id="view-passwords">
+        <div class="page-intro"><p class="eyebrow" data-i18n="PASSWORDLAB">PASSWORD LAB</p><h2 data-i18n="passwordTitle">Passphrase strength lab</h2><p data-i18n="passwordIntro">Generate a strong example or evaluate a password locally in your browser. Inputs are never uploaded.</p></div>
+        <div class="two-column">
+          <article class="panel form-panel"><div class="panel-head"><div><p class="eyebrow" data-i18n="GENERATE">GENERATE</p><h3 data-i18n="generatorTitle">Create a strong passphrase</h3></div><span class="panel-symbol">✳</span></div>
+            <label class="field-label" for="passLength" data-i18n="lengthLabel">Length</label><div class="range-row"><input id="passLength" type="range" min="12" max="32" value="20"><output id="lengthOutput">20 characters</output></div>
+            <div class="check-row"><label><input type="checkbox" id="includeSymbols" checked><span data-i18n="includeSymbols">Include symbols</span></label><label><input type="checkbox" id="includeNumbers" checked><span data-i18n="includeNumbers">Include numbers</span></label></div>
+            <button class="primary-btn full-btn" id="generatePassword" data-i18n="generateBtn">Generate sample password</button>
+            <div class="generated-wrap"><code id="generatedPassword">Click generate to create a sample</code><button class="icon-btn" id="copyPassword" aria-label="Copy sample password" title="Copy">▢</button></div><p class="helper" id="copyMessage" aria-live="polite"></p>
+          </article>
+          <article class="panel form-panel"><div class="panel-head"><div><p class="eyebrow" data-i18n="ANALYZE">ANALYZE</p><h3 data-i18n="analyzerTitle">Check a password</h3></div><span class="panel-symbol">⌕</span></div>
+            <label class="field-label" for="passwordInput" data-i18n="passwordLabel">Password (processed locally)</label><div class="password-input-row"><input id="passwordInput" type="password" autocomplete="off" placeholder="Enter a sample password"><button class="icon-btn" id="togglePassword" aria-label="Show password">◉</button></div>
+            <div class="strength-head"><span data-i18n="strength">Estimated strength</span><strong id="strengthLabel">—</strong></div><div class="strength-meter"><span id="strengthBar"></span></div>
+            <ul class="feedback-list" id="passwordFeedback"><li data-i18n="enterToAnalyze">Enter a password to see local feedback.</li></ul><p class="helper" data-i18n="passwordPrivacy">For privacy, use a sample—not a password you currently use.</p>
+          </article>
+        </div>
+        <article class="panel simulation-panel"><div class="panel-head"><div><p class="eyebrow" data-i18n="SIMULATEDTEST">SIMULATED TEST</p><h3 data-i18n="testTitle">Understand password resilience</h3></div><span class="panel-symbol">⏱</span></div><p data-i18n="testIntro">Run a short educational timing model using fictional assumptions. It does not try candidate passwords against a network or service.</p><div class="sim-controls"><label class="field-label" for="guessRate" data-i18n="guessRate">Hypothetical guesses per second</label><select id="guessRate"><option value="1000">1,000 — basic example</option><option value="1000000" selected>1,000,000 — illustrative</option><option value="1000000000">1,000,000,000 — illustrative</option></select><button class="secondary-btn" id="runEstimate" data-i18n="estimateBtn">Calculate estimate</button></div><div class="estimate-result" id="estimateResult" aria-live="polite"><span class="estimate-icon">⌁</span><span data-i18n="estimatePlaceholder">Enter a sample password above, then calculate an estimate.</span></div></article>
+      </section>
+
+      <section class="view" id="view-audit">
+        <div class="page-intro"><p class="eyebrow" data-i18n="ROUTERAUDIT">ROUTER AUDIT</p><h2 data-i18n="auditTitle">Router security checklist</h2><p data-i18n="auditIntro">Use this checklist for a router you own or are authorized to manage. Results are saved only in this page session.</p></div>
+        <div class="audit-layout"><article class="panel audit-panel"><div class="panel-head"><div><p class="eyebrow" data-i18n="CHECKLIST">CHECKLIST</p><h3 data-i18n="auditChecklist">Recommended protections</h3></div><span class="panel-symbol">✓</span></div><div id="auditItems" class="audit-items"></div><div class="audit-actions"><button class="secondary-btn" id="resetAudit" data-i18n="resetChecklist">Reset checklist</button><button class="primary-btn" id="scoreAudit" data-i18n="scoreChecklist">Calculate score</button></div></article><aside class="panel audit-score"><p class="eyebrow" data-i18n="YOURRESULT">YOUR RESULT</p><div class="score-ring" id="auditRing"><div><strong id="auditScore">0</strong><span>/100</span></div></div><h3 id="auditGrade" data-i18n="notScored">Not scored yet</h3><p id="auditSummary" data-i18n="auditScoreHint">Mark the protections that are enabled, then calculate your score.</p><button class="text-button" id="saveAuditReport" data-i18n="saveReport">Save report ↗</button></aside></div>
+      </section>
+
+      <section class="view" id="view-reports">
+        <div class="page-intro"><p class="eyebrow" data-i18n="REPORTS">REPORTS</p><h2 data-i18n="reportsTitle">Your lab reports</h2><p data-i18n="reportsIntro">Export a summary of the simulated exercises and any router checklist score.</p></div>
+        <div class="report-card panel"><div class="report-icon">▤</div><div class="report-copy"><h3 data-i18n="reportSummaryTitle">Security lab session summary</h3><p data-i18n="reportSummaryText">Includes module activity, password-strength feedback, and checklist results available in this session.</p></div><button class="primary-btn" id="downloadReport" data-i18n="downloadReport">Download report (.txt)</button></div>
+        <div class="panel report-safety"><span class="shield">⬡</span><div><h3 data-i18n="reportPrivacyTitle">Privacy by design</h3><p data-i18n="reportPrivacyText">Reports are generated in your browser. No password, network name, or audit answer is sent to a server by this demo.</p></div></div>
+      </section>
+      <footer class="main-footer"><span>© 2026 WiFi Security Lab</span><span data-i18n="footerText">Learn. Simulate. Secure.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
